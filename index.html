@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Separar números pares e impares</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      font-size: 14px;
+      width: 300px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 5px;
+    }
+  </style>
+  <script>
+    function separarParesImpares(numeros) {
+      var pares = numeros.filter(numero => numero % 2 === 0);
+      var impares = numeros.filter(numero => numero % 2 !== 0);
+
+      return {
+        pares: pares,
+        impares: impares
+      };
+    }
+
+    function separarYMostrar() {
+      var numerosInput = document.getElementById("numeros").value;
+      var numeros = numerosInput.split(",").map(numero => parseInt(numero.trim(), 10));
+
+      var resultado = separarParesImpares(numeros);
+
+      document.getElementById("pares").textContent = "Números pares: " + resultado.pares;
+      document.getElementById("impares").textContent = "Números impares: " + resultado.impares;
+    }
+  </script>
+</head>
+<body>
+  <h1>Separar números pares e impares</h1>
+  <label for="numeros">Ingrese los números separados por comas:</label>
+  <input type="text" id="numeros">
+  <button onclick="separarYMostrar()">Separar</button>
+
+  <h2>Resultados:</h2>
+  <p id="pares"></p>
+  <p id="impares"></p>
+</body>
+</html>
